@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 
 const axiosInstance = axios.create({
-  baseURL: "https://reqres.in/api",
+  baseURL: "http://localhost:3005",
   headers: {
     "Content-Type": "application/json",
   },
@@ -14,7 +14,7 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: (credentials) => {
       return axiosInstance
-        .post("http://localhost:3005/auth/login", credentials)
+        .post("/auth/login", credentials)
         .then((res) => res.data);
     },
     onSuccess: () => toast.success("Login Successful"),

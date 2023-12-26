@@ -5,6 +5,7 @@ import { useUser } from "../store/user-store";
 const Header = () => {
   const { logOut } = useUserActions();
   const user = useUser();
+  console.log(user);
 
   return (
     <header className="h-16 bg-blue-400  text-white font-bold text-xl ">

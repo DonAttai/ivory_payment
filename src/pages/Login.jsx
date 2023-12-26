@@ -4,34 +4,8 @@ import { useEffect, useRef } from "react";
 import { useUser, useUserActions } from "../store/user-store";
 import { useNavigate } from "react-router-dom";
 
-const credentials = {
-  id: 1,
-  email: "attai@gmail.com",
-  roles: ["admin"],
-  transactions: [
-    {
-      createdAt: "2023-08-27T21:26:05.579Z",
-      amount: "094707791",
-      user: "baeda5b1de95fb87cbee712e",
-      id: "1",
-    },
-    {
-      createdAt: "2023-08-27T13:24:00.665Z",
-      amount: "387847766",
-      user: "baeda5b1de95fb87cbee712e",
-      id: "2",
-    },
-    {
-      createdAt: "2023-08-27T12:50:40.470Z",
-      amount: "745874504",
-      user: "baeda5b1de95fb87cbee712e",
-      id: "3",
-    },
-  ],
-};
-
 export const Login = () => {
-  const { data, isLoading, mutate } = useLogin();
+  const { data: credentials, isLoading, mutate } = useLogin();
   const { setCredentials } = useUserActions();
   const navigate = useNavigate();
   const user = useUser();
@@ -43,10 +17,10 @@ export const Login = () => {
   });
 
   useEffect(() => {
-    if (data) {
+    if (credentials) {
       setCredentials(credentials);
     }
-  }, [setCredentials, data]);
+  }, [setCredentials, credentials]);
 
   useEffect(() => {
     if (user) {
